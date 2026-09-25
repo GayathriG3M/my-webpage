@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>G3 | My Craft Portfolio</title>
+
+    <style>
+
+        /* =====================================================
+           G3 MY CRAFT PORTFOLIO
+           Main Logo Background: #EDE5F2
+           ===================================================== */
+
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            background: #EDE5F2;
+            color: #514655;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           LOADING SCREEN
+        ========================= */
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+
+            /* EXACT same color as Logo.png */
+            background: #EDE5F2;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 99999;
+
+            opacity: 1;
+            visibility: visible;
+
+            transition:
+                opacity 0.8s ease,
+                visibility 0.8s ease;
+        }
+
+        #preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            position: relative;
+
+            width: 240px;
+            height: 240px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-ring {
+            position: absolute;
+
+            width: 210px;
+            height: 210px;
+
+            border-radius: 50%;
+
+            border: 4px solid rgba(81, 70, 85, 0.10);
+
+            border-top-color: #B17A98;
+            border-right-color: #9A6682;
+
+            animation: logoSpin 1.4s linear infinite;
+        }
+
+        .loader-logo {
+            width: 175px;
+            height: 135px;
+
+            object-fit: contain;
+
+            display: block;
+
+            position: relative;
+            z-index: 2;
+
+            background: transparent;
+
+            border: none;
+        }
+
+        @keyframes logoSpin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            /* EXACT logo background */
+            background: #EDE5F2;
+
+            padding: 2px 7%;
+
+            min-height: 105px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow:
+                0 2px 12px rgba(81, 70, 85, 0.08);
+        }
+
+
+        /* =========================
+           TOP LOGO
+        ========================= */
+
+        .logo {
+            width: 190px;
+            height: 105px;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            flex-shrink: 0;
+
+            background: transparent;
+        }
+
+        .logo img {
+            width: 180px;
+            height: 100px;
+
+            object-fit: contain;
+
+            display: block;
+
+            background: transparent;
+
+            border: none;
+
+            max-width: none;
+        }
+
+
+        /* =========================
+           NAVIGATION LINKS
+        ========================= */
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 32px;
+
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+
+            color: #665568;
+
+            font-size: 0.95rem;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #8F5875;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 88vh;
+
+            padding: 70px 8%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #EDE5F2 0%,
+                    #F2ECF5 50%,
+                    #F7F3F9 100%
+                );
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .small-heading {
+            color: #9A6682;
+
+            font-size: 1rem;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+
+            line-height: 1.1;
+
+            color: #514655;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #9A6682;
+        }
+
+        .hero p {
+            max-width: 600px;
+
+            font-size: 1.1rem;
+
+            color: #6F6270;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            background: #B17A98;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 30px;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 6px 15px rgba(120, 80, 105, 0.20);
+        }
+
+        .hero-button:hover {
+            background: #8F5875;
+
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+
+            display: flex;
+
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: min(450px, 100%);
+
+            height: 450px;
+
+            object-fit: contain;
+
+            border-radius: 25px;
+
+            background: white;
+
+            padding: 15px;
+
+            box-shadow:
+                0 12px 35px rgba(81, 70, 85, 0.15);
+        }
+
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+
+            color: #514655;
+
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #897B87;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            background: #FFFFFF;
+        }
+
+        .about-content {
+            display: flex;
+
+            align-items: center;
+
+            gap: 60px;
+
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+        .about-image {
+            flex: 1;
+
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+
+            max-width: 430px;
+
+            height: 350px;
+
+            object-fit: contain;
+
+            border-radius: 20px;
+
+            background: #F5F0F8;
+
+            padding: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(81, 70, 85, 0.12);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+
+            color: #B17A98;
+
+            margin-bottom: 18px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+
+            color: #716570;
+        }
+
+
+        /* =========================
+           CRAFT GALLERY
+        ========================= */
+
+        .gallery-section {
+            background: #F1EBF5;
+        }
+
+        .gallery {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 30px;
+        }
+
+        .craft-card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 15px;
+
+            box-shadow:
+                0 7px 22px rgba(81, 70, 85, 0.10);
+
+            transition: 0.3s;
+
+            overflow: hidden;
+        }
+
+        .craft-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 12px 30px rgba(81, 70, 85, 0.17);
+        }
+
+        .craft-card img {
+            width: 100%;
+
+            height: 300px;
+
+            object-fit: contain;
+
+            background: #FAF8FC;
+
+            border-radius: 15px;
+
+            display: block;
+        }
+
+        .craft-info {
+            text-align: center;
+
+            padding: 18px 8px 8px;
+        }
+
+        .craft-info h3 {
+            color: #675764;
+
+            font-size: 1.2rem;
+
+            margin-bottom: 5px;
+        }
+
+        .craft-info p {
+            font-size: 0.9rem;
+
+            color: #9A8995;
+        }
+
+
+        /* =========================
+           PROCESS
+        ========================= */
+
+        .process {
+            background: #FFFFFF;
+        }
+
+        .process-grid {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 30px;
+        }
+
+        .process-card {
+            text-align: center;
+
+            padding: 35px 25px;
+
+            background: #F5F0F8;
+
+            border-radius: 20px;
+        }
+
+        .process-number {
+            width: 55px;
+
+            height: 55px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #B17A98;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 1.2rem;
+
+            font-weight: bold;
+        }
+
+        .process-card h3 {
+            color: #665563;
+
+            margin-bottom: 10px;
+        }
+
+        .process-card p {
+            color: #897B87;
+
+            font-size: 0.95rem;
+        }
+
+
+        /* =========================
+           MATERIALS
+        ========================= */
+
+        .materials {
+            background:
+                linear-gradient(
+                    135deg,
+                    #F1EBF5,
+                    #F7F3F9
+                );
+        }
+
+        .materials-list {
+            max-width: 850px;
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
+
+        .material {
+            background: white;
+
+            padding: 12px 22px;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 5px 15px rgba(81, 70, 85, 0.08);
+
+            color: #766674;
+
+            transition: 0.3s;
+        }
+
+        .material:hover {
+            background: #B17A98;
+
+            color: white;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           CLOSING
+        ========================= */
+
+        .closing {
+            width: 100%;
+
+            padding: 90px 20px 65px;
+
+            /*
+               IMPORTANT:
+               This is EXACTLY the same color
+               as the background inside Logo.png.
+               
+               Do NOT use a gradient here.
+            */
+            background: #EDE5F2;
+
+            text-align: center;
+        }
+
+        .closing-content {
+            max-width: 700px;
+
+            margin: 0 auto;
+
+            text-align: center;
+        }
+
+        .closing-heart {
+            color: #B17A98;
+
+            font-size: 1.5rem;
+
+            margin-bottom: 18px;
+        }
+
+        .closing h2 {
+            margin: 0 0 15px;
+
+            color: #8F647B;
+
+            font-family: Georgia, serif;
+
+            font-size: 2.2rem;
+
+            font-weight: 500;
+
+            letter-spacing: 0.5px;
+        }
+
+        .closing p {
+            max-width: 600px;
+
+            margin: 0 auto;
+
+            color: #7D6D76;
+
+            font-size: 1rem;
+
+            line-height: 1.8;
+        }
+
+        .closing-logo {
+            width: 160px;
+
+            height: 120px;
+
+            object-fit: contain;
+
+            display: block;
+
+            margin: 35px auto 0;
+
+            /*
+               Keep transparent because the actual
+               logo image already contains #EDE5F2.
+            */
+            background: transparent;
+
+            border: none;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            width: 100%;
+
+            padding: 30px 20px;
+
+            background: #DED4E5;
+
+            color: #695A68;
+
+            font-size: 0.9rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .about-content {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .gallery {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            nav {
+                min-height: 125px;
+
+                flex-direction: column;
+
+                gap: 2px;
+
+                padding: 0 5% 8px;
+            }
+
+            .logo {
+                width: 170px;
+
+                height: 85px;
+
+                justify-content: center;
+            }
+
+            .logo img {
+                width: 165px;
+
+                height: 85px;
+            }
+
+            .nav-links {
+                gap: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            section {
+                padding: 65px 5%;
+            }
+
+            .hero {
+                padding: 60px 5%;
+            }
+
+            .hero-image img {
+                height: 320px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .craft-card img {
+                height: 320px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .loader {
+                width: 190px;
+                height: 190px;
+            }
+
+            .loader-ring {
+                width: 165px;
+                height: 165px;
+            }
+
+            .loader-logo {
+                width: 130px;
+                height: 100px;
+            }
+
+            .closing {
+                /*
+                   Still EXACTLY matches Logo.png
+                */
+                background: #EDE5F2;
+
+                padding: 70px 20px 50px;
+            }
+
+            .closing h2 {
+                font-size: 1.9rem;
+            }
+
+            .closing p {
+                font-size: 0.95rem;
+            }
+
+            .closing-logo {
+                width: 140px;
+                height: 105px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         LOADING SCREEN
+    ========================= -->
+
+    <div id="preloader">
+
+        <div class="loader">
+
+            <div class="loader-ring"></div>
+
+            <img
+                src="images/Logo.png"
+                alt="G3 Logo"
+                class="loader-logo"
+            >
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+
+            <img
+                src="images/Logo.png"
+                alt="G3 Logo"
+            >
+
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#crafts">My Crafts</a>
+            </li>
+
+            <li>
+                <a href="#process">My Process</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section
+        class="hero"
+        id="home"
+    >
+
+        <div class="hero-text">
+
+            <div class="small-heading">
+                Handmade with love ♡
+            </div>
+
+            <h1>
+                Little things
+                <br>
+                <span>made with love.</span>
+            </h1>
+
+            <p>
+                Welcome to my little creative corner,
+                where simple materials become handmade
+                crafts through imagination, patience and love.
+            </p>
+
+            <a
+                href="#crafts"
+                class="hero-button"
+            >
+                Explore My Crafts
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=85"
+                alt="Creative art and craft workspace"
+            >
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section
+        class="about"
+        id="about"
+    >
+
+        <div class="section-title">
+
+            <h2>
+                About My Crafts
+            </h2>
+
+            <p>
+                Simple materials. Creative ideas. Handmade results.
+            </p>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <div class="about-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=900&q=85"
+                    alt="Art and craft materials"
+                >
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h3>
+                    Creating with what I have ✿
+                </h3>
+
+                <p>
+                    My crafts are made using simple and
+                    easily available materials. I enjoy
+                    turning ordinary things into something
+                    creative and meaningful.
+                </p>
+
+                <p>
+                    I work with materials such as paper,
+                    cardboard, glue, watercolors, acrylic
+                    colors and other everyday craft supplies.
+                </p>
+
+                <p>
+                    This website is a small portfolio of
+                    the handmade projects I have created
+                    and enjoyed making.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CRAFTS
+    ========================= -->
+
+    <section
+        class="gallery-section"
+        id="crafts"
+    >
+
+        <div class="section-title">
+
+            <h2>
+                My Craft Collection
+            </h2>
+
+            <p>
+                A collection of handmade projects created
+                with creativity and care.
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+
+            <div class="craft-card">
+
+                <img
+                    src="images/Craft1.png"
+                    alt="Craft 1"
+                >
+
+                <div class="craft-info">
+
+                    <h3>Craft 1</h3>
+
+                    <p>Handmade creation</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="craft-card">
+
+                <img
+                    src="images/Craft2.png"
+                    alt="Craft 2"
+                >
+
+                <div class="craft-info">
+
+                    <h3>Craft 2</h3>
+
+                    <p>Handmade creation</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="craft-card">
+
+                <img
+                    src="images/Craft3.jpg"
+                    alt="Craft 3"
+                >
+
+                <div class="craft-info">
+
+                    <h3>Craft 3</h3>
+
+                    <p>Handmade creation</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="craft-card">
+
+                <img
+                    src="images/Craft4.png"
+                    alt="Craft 4"
+                >
+
+                <div class="craft-info">
+
+                    <h3>Craft 4</h3>
+
+                    <p>Handmade creation</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="craft-card">
+
+                <img
+                    src="images/Craft5.jpg"
+                    alt="Craft 5"
+                >
+
+                <div class="craft-info">
+
+                    <h3>Craft 5</h3>
+
+                    <p>Handmade creation</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="craft-card">
+
+                <img
+                    src="images/Craft6.png"
+                    alt="Craft 6"
+                >
+
+                <div class="craft-info">
+
+                    <h3>Craft 6</h3>
+
+                    <p>Handmade creation</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="craft-card">
+
+                <img
+                    src="images/Craft7.png"
+                    alt="Craft 7"
+                >
+
+                <div class="craft-info">
+
+                    <h3>Craft 7</h3>
+
+                    <p>Handmade creation</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="craft-card">
+
+                <img
+                    src="images/Craft8.png"
+                    alt="Craft 8"
+                >
+
+                <div class="craft-info">
+
+                    <h3>Craft 8</h3>
+
+                    <p>Handmade creation</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="craft-card">
+
+                <img
+                    src="images/Craft9.jpg"
+                    alt="Craft 9"
+                >
+
+                <div class="craft-info">
+
+                    <h3>Craft 9</h3>
+
+                    <p>Handmade creation</p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PROCESS
+    ========================= -->
+
+    <section
+        class="process"
+        id="process"
+    >
+
+        <div class="section-title">
+
+            <h2>
+                My Creative Process
+            </h2>
+
+            <p>
+                From a simple idea to a handmade creation.
+            </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    1
+                </div>
+
+                <h3>
+                    Imagine
+                </h3>
+
+                <p>
+                    I start with a simple idea and think
+                    about how I can turn it into a craft.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    2
+                </div>
+
+                <h3>
+                    Create
+                </h3>
+
+                <p>
+                    I gather simple materials and begin
+                    experimenting, cutting, painting and assembling.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    3
+                </div>
+
+                <h3>
+                    Finish
+                </h3>
+
+                <p>
+                    I add the final details and enjoy seeing
+                    the original idea become a finished handmade piece.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MATERIALS
+    ========================= -->
+
+    <section class="materials">
+
+        <div class="section-title">
+
+            <h2>
+                Materials I Love
+            </h2>
+
+            <p>
+                Some of the simple materials behind my creations.
+            </p>
+
+        </div>
+
+
+        <div class="materials-list">
+
+            <div class="material">
+                Paper
+            </div>
+
+            <div class="material">
+                Cardboard
+            </div>
+
+            <div class="material">
+                Glue
+            </div>
+
+            <div class="material">
+                Watercolors
+            </div>
+
+            <div class="material">
+                Acrylic Colors
+            </div>
+
+            <div class="material">
+                Craft Paper
+            </div>
+
+            <div class="material">
+                Everyday Materials
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CLOSING
+    ========================= -->
+
+    <section class="closing">
+
+        <div class="closing-content">
+
+            <div class="closing-heart">
+                ♡
+            </div>
+
+            <h2>
+                Thank you for visiting ♡
+            </h2>
+
+            <p>
+                This little portfolio is a collection
+                of things I have enjoyed creating,
+                one small idea at a time.
+            </p>
+
+            <img
+                src="images/Logo.png"
+                alt="G3 Logo"
+                class="closing-logo"
+            >
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 G3 · My Craft Portfolio · Made with ♡
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        window.addEventListener("load", function () {
+
+            const preloader =
+                document.getElementById("preloader");
+
+            setTimeout(function () {
+
+                preloader.classList.add("hide");
+
+            }, 900);
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
